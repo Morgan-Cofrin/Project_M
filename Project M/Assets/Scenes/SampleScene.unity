@@ -177,7 +177,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -215,14 +215,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 266e5ad89c394aa42b30c3e9e972a9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7886385920505862375}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.2
   offset: {x: 0, y: 2, z: -10}
+  target: {fileID: 7886385920505862375}
 --- !u!1 &791669357
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 2030243122}
   - component: {fileID: 2030243121}
   - component: {fileID: 7886385920505862376}
+  - component: {fileID: 7886385920505862377}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -761,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40fa920bc0eec5438b1b5ba55016159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   jumpForce: 400
   ceilingCheck: {fileID: 1353894365}
   groundCheck: {fileID: 1890378823}
@@ -769,3 +770,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   checkRadius: 0.5
+--- !u!114 &7886385920505862377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6597447528205018315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2146057afe3294c8cce86df5d75b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 519420031}

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float moveSpeed;
     public float jumpForce;
     public Transform ceilingCheck;
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     
    
-    
     //Awake is called before Start, after all objects are initialized. Called in random order.
     private void Awake()
     {
@@ -30,21 +28,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Get Inputs
         ProcessInputs();
 
-        //Animate
         Animate();
 
     }
 
-    // Better for handling physics, can be called mulitple ties per update frame.
+    // Better for handling physics, can be called mulitple times per update frame.
     private void FixedUpdate()
     {
-        //Check if grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
+        CheckIfGrounded();
 
-        //Move
         Move();
     }
 
@@ -78,6 +72,12 @@ public class PlayerMovement : MonoBehaviour
             rigidBody.AddForce(new Vector2(0f, jumpForce));
         }
         isJumping = false;
+    }
+
+    private void CheckIfGrounded()
+    {
+        //Check if grounded
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
     }
 
     private void FlipCharacter()

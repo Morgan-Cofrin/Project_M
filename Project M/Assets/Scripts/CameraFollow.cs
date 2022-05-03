@@ -5,19 +5,25 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public Transform target;
+    private Vector3 velocity = Vector3.zero;
 
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public float smoothSpeed = 0.25f;
+    public Vector3 offset = new Vector3(0f, 2f, -10f); //Doesn't actually do much because of orthographic camera, change size to see more
+
+    [SerializeField] private Transform target;
 
 
-    void LateUpdate()
+    //Remember to attach the camera to the target
+    void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-
-        transform.position = smoothedPosition;
-        //transform.LookAt(target);
+        SmoothDampCameraFollow();
 
     }
+
+    private void SmoothDampCameraFollow()
+    {
+        Vector3 targetPosition = target.position + offset;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothSpeed);
+    }
+
 }
