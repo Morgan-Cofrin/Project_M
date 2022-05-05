@@ -33,12 +33,6 @@ public class OrthographicBoundaries : MonoBehaviour
 
     }
 
-   
-    private void DefineObjectBoundaries()
-    {
-        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
-        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
-    }
 
     private void DefineCameraBoundaries()
     {
@@ -50,12 +44,24 @@ public class OrthographicBoundaries : MonoBehaviour
         screenBounds = new Rect(cameraBottomLeftPosition, cameraSize);
     }
 
+    private void DefineObjectBoundaries()
+    {
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
+        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+    }
+
+
     private void KeepObjectInBoundaries()
     {
         //Keeps attached object inside screen bounds
         Vector3 viewPos = transform.position;
         viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x + objectWidth, screenBounds.x + screenBounds.width - objectWidth);
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y + objectHeight, screenBounds.y + screenBounds.height - objectHeight);
+
+        //other variant
+        //viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x, screenBounds.x + screenBounds.width);
+        //viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y, screenBounds.y + screenBounds.height);
+
         transform.position = viewPos;
 
     }
